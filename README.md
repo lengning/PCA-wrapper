@@ -13,6 +13,7 @@ The 5th term is the lower limit of detection threshold (default is 0). Genes wit
 The 6th term should be T or F. If T is specified, median-by-ratio normalization will be performed prior to PCA analysis (default is F).
 
 To simplify your input command and use the default values, you may run
+
 Rscript PCA.R PCA_example.csv
 
 or
