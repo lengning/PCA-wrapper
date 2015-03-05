@@ -5,7 +5,7 @@ print(options)
 File=options[1] # file name
 n=as.numeric(options[2]) # number of PCs to output
 LOD=as.numeric(options[3]) # lower limit of detection
-Norm=options[4]
+Norm=options[4] # whether perform normalization; if "T" is specified, median-by-ratio normalization will be performed.
 
 if(length(options)<2)n=5
 if(length(options)<3)LOD=0
