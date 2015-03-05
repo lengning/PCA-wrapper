@@ -13,9 +13,11 @@ The 5th input is the lower limit of detection threshold (default is 0). Genes wi
 The 6th input should be T or F. If T is specified, median-by-ratio normalization will be performed prior to PCA analysis (default is F).
 
 To simplify your input command and use the default values, you may run
-- Rscript PCA.R PCA_example.csv
+Rscript PCA.R PCA_example.csv
+
 or
-- Rscript PCA.R PCA_example.csv 4
+
+Rscript PCA.R PCA_example.csv 4
 
 
 The code will first rescale the data to gene specific z scores, then perform PCA.
