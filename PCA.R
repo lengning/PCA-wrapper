@@ -5,9 +5,12 @@ print(options)
 File=options[1] # file name
 n=as.numeric(options[2]) # number of PCs to output
 LOD=as.numeric(options[3]) # lower limit of detection
+Norm=options[4]
 
 if(length(options)<2)n=5
 if(length(options)<3)LOD=0
+if(length(options)<4)Norm="F"
+
 #Text=T
 #n=5
 #File="PCA_example.csv"
@@ -24,6 +27,11 @@ Mat=Matraw
 if(length(WhichRM)>0)Mat=Matraw[-WhichRM,]
 print(str(Mat))
 
+if(Norm=="T"){
+cat("\n ==== Performing normalization ==== \n")
+library(EBSeq)
+Mat=GetNormalizedMat(Mat, MedianNorm(Mat))
+}
 
 #Rescale
 MatSC=t(apply(Mat,1,scale))
