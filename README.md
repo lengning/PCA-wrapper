@@ -23,14 +23,14 @@ Rscript PCA.R PCA_example.csv 4
 The code will first rescale the data to gene specific z scores, then perform PCA.
 The output files are:
 
-prefix_PC_pairs.pdf
-- pairwise plots of the transformed data; k PCs will be shown
-prefix_loading.csv
-- gene loading for the top k PCs
-prefix_sort_by_absloading.csv
-- For each of the top k PCs, genes are sorted by their absolute loadings in each PC
-prefix_perc_sdev.csv
-- Percentage of SD explained by each PC
+- prefix_PC_pairs.pdf:
+pairwise plots of the transformed data; k PCs will be shown
+- prefix_loading.csv
+: gene loading for the top k PCs
+- prefix_sort_by_absloading.csv
+: For each of the top k PCs, genes are sorted by their absolute loadings in each PC
+- prefix_perc_sdev.csv
+: Percentage of SD explained by each PC
 
 The ‘prefix’ is defined as the filename of the input file (the string before ‘.csv’) 
 
