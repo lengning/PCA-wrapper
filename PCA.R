@@ -14,9 +14,24 @@ if(length(options)<4)Norm="F"
 #Text=T
 #n=5
 #File="PCA_example.csv"
-prefix=strsplit(File,split="\\.csv")[[1]][1]
 
-In=read.csv(File,stringsAsFactors=F,row.names=1)
+# csv or txt
+tmp=strsplit(File, split="\\.")[[1]]
+FileType=tmp[length(tmp)]
+
+if(FileType=="csv"){
+	cat("\n Read in csv file \n")
+	prefix=strsplit(File,split="\\.csv")[[1]][1]
+	In=read.csv(File,stringsAsFactors=F,row.names=1)
+}
+if(FileType!="csv"){
+	cat("\n Read in tab delimited file \n")
+	prefix=strsplit(File,split=paste0("\\.",FileType))[[1]][1]
+	In=read.table(File,stringsAsFactors=F,row.names=1)
+}
+
+
+
 Matraw=data.matrix(In)
 
 Max=apply(Matraw,1,max)
