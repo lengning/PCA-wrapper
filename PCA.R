@@ -45,7 +45,9 @@ print(str(Mat))
 if(Norm=="T"){
 cat("\n ==== Performing normalization ==== \n")
 library(EBSeq)
-Mat=GetNormalizedMat(Mat, MedianNorm(Mat))
+Sizes=MedianNorm(Mat)
+if(is.na(Sizes[1]))cat("\n Warning: all genes have 0(s), normalization is not performed \n")
+else Mat=GetNormalizedMat(Mat, MedianNorm(Mat))
 }
 
 #Rescale
@@ -70,9 +72,9 @@ plot3d(PCAres$x[,1:3])
 rgl.texts(PCAres$x[,1],PCAres$x[,2],PCAres$x[,3],colnames(Mat),col="darkgrey")
 
 PCA_sort=sapply(1:n,function(j){
-																 tmp=abs(PCAres$rotation[,j])
-																 t2=names(sort(tmp,decreasing=T))
-																	})
+			 tmp=abs(PCAres$rotation[,j])
+			 t2=names(sort(tmp,decreasing=T))
+		})
 colnames(PCA_sort)=paste0("PC",1:n)
 
 Perc=PCAres$sdev/sum(PCAres$sdev)
