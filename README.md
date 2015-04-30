@@ -6,7 +6,7 @@ Example commands to run the script:
 - Rscript PCA.R PCA_example2.txt 3 0 T
 - Rscript PCA.R PCA_example3.tab 5 50 F
 
-The 3rd term should be the name of the input data set. 
+The 3rd term indicates the name of the input data set. 
 Currently the program takes csv files or tab delimited file.
 The input file will be treated as a tab delimited file if the suffix is not '.csv'.
 Rows are genes and columns are samples. Row names and column names are required in the input file.
@@ -15,7 +15,7 @@ The 4th term defines number of PCs to output (define it as k, default k =5)
 
 The 5th term defines the lower limit of detection threshold (default is 0). Genes with max expression below this threshold will be removed.
 
-The 6th term should be T or F. If T is specified, median-by-ratio normalization will be performed prior to PCA analysis (default is F).
+The 6th term defines whether normalization is needed (T or F). If T is specified, median-by-ratio normalization will be performed prior to PCA analysis (default is F).
 
 To simplify your input command and use the default values, you may run
 
