@@ -1,4 +1,3 @@
-X11()
 
 options <- commandArgs(trailingOnly = TRUE)
 print(options)
@@ -6,14 +5,14 @@ File=options[1] # file name
 n=as.numeric(options[2]) # number of PCs to output
 LOD=as.numeric(options[3]) # lower limit of detection
 Norm=options[4] # whether perform normalization; if "T" is specified, median-by-ratio normalization will be performed.
+Plot=options[5] # whether plot
 
 if(length(options)<2)n=5
 if(length(options)<3)LOD=0
 if(length(options)<4)Norm="F"
+if(length(options)<5)Plot="T"
 
-#Text=T
-#n=5
-#File="PCA_example.csv"
+if(Plot=="T") X11()
 
 # csv or txt
 tmp=strsplit(File, split="\\.")[[1]]
@@ -60,17 +59,18 @@ print(n)
 
 PCAres=prcomp(t(MatSC))
 
-pairs(PCAres$x[,1:n])
-
+if(Plot=="T"){
+	pairs(PCAres$x[,1:n])
+}
 pdf(paste0(prefix,"_PC_pairs.pdf"),width=15,height=15)
 pairs(PCAres$x[,1:n])
 dev.off()
 
-
+if(Plot=="T"){
 library(rgl)
 plot3d(PCAres$x[,1:3])
 rgl.texts(PCAres$x[,1],PCAres$x[,2],PCAres$x[,3],colnames(Mat),col="darkgrey")
-
+}
 PCA_sort=sapply(1:n,function(j){
 			 tmp=abs(PCAres$rotation[,j])
 			 t2=names(sort(tmp,decreasing=T))
@@ -83,6 +83,6 @@ write.csv(PCAres$rotation[,1:n],file=paste0(prefix,"_loading.csv"))
 write.csv(Perc,file=paste0(prefix,"_perc_sdev.csv"))
 write.csv(PCA_sort[,1:n],file=paste0(prefix,"_sort_by_absloading.csv"))
 
-Sys.sleep(1e30)
+if(Plot=="T")Sys.sleep(1e30)
 
 
