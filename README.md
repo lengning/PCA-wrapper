@@ -7,12 +7,13 @@ Example commands to run the script:
 - Rscript PCA.R PCA_example3.tab 5 50 F
 - Rscript PCA.R PCA_example.csv 4 10 T F
 - Rscript PCA.R bulkex.csv 4 10 T F T scex.csv
+- Rscript PCA.R bulkex.csv 4 10 T T T scex.csv
 
 The 3rd term indicates the name of the input data set. 
 Currently the program takes csv files or tab delimited file.
 The input file will be treated as a tab delimited file if the suffix is not '.csv'.
 Rows are genes and columns are samples. Row names and column names are required in the input file.
-If Projected == T, this entry of input data file can be bulk (The file that you want to use PC/loadings information). 
+If Projected == T, this entry of input data file can be bulk file (The file that you want to use PC/loadings information). 
 
 The 4th term defines number of PCs to output (define it as k, default k =5)
 
@@ -22,9 +23,9 @@ The 6th term defines whether normalization is needed (T or F). If T is specified
 
 The 7th term defines whether X11 should be enabled/disabled. Default is T. If it is specified as F, figures won't be generated in console. The pair wise scatter plots will still be generated as a pdf file.
 
-The 8th term defines whether a user wants projected PCA. For example, plot PCA of single cell data using bulk loadings.
+The 8th term defines whether a user wants projected PCA plot. For example, projected PCA plot of single cell data using bulk loadings. (default is F).
 
-The 9th term indicates the name of input data that a user wants to obtain PCA plot (single cell file should be here)
+The 9th term indicates the name of input data that a user wants to project (e.g. single cell file)
 
 
 
@@ -50,9 +51,9 @@ pairwise plots of the transformed data; k PCs will be shown
 - prefix_perc_sdev.csv
 : Percentage of SD explained by each PC
 
-If Projected==T, - prefix_sort_by_absloading.csv will not be provided.
+If Projected==T, "prefix_sort_by_absloading.csv" and "prefix_loading.csv" will not be provided.
 
-If Projected==T, - prefix_perc_sdev.csv will show percentage of variance that can be explained by File1 (bulk) data
+If Projected==T, "prefix_perc_sdev.csv" will show percentage of variance that can be explained by File1 (bulk) data
 
 
 The ‘prefix’ is defined as the filename of the input file (the string before the suffix, like the string before ‘.csv’) 
