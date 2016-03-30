@@ -23,9 +23,9 @@ The 6th term defines whether normalization is needed (T or F). If T is specified
 
 The 7th term defines whether X11 should be enabled/disabled. Default is T. If it is specified as F, figures won't be generated in console. The pair wise scatter plots will still be generated as a pdf file.
 
-The 8th term defines whether a user wants projected PCA plot. For example, projected PCA plot of single cell data using bulk loadings. (default is F).
+The 8th term defines whether a user wants to run projected PCA. For example, projected PCA plot of single cell data using bulk loadings. (default is F). If it is set as T, the 9th term is required (see below).
 
-The 9th term indicates the name of input data that a user wants to project (e.g. single cell file)
+The 9th term indicates the name of input data that a user wants to project (e.g. single cell file). If projected PCA is specified, the script will generate PCs using the data file from the 3rd file, and generate projected PCA plots for the data from the 9th term.
 
 
 
@@ -51,9 +51,9 @@ pairwise plots of the transformed data; k PCs will be shown
 - prefix_perc_sdev.csv
 : Percentage of SD explained by each PC
 
-If Projected==T, "prefix_sort_by_absloading.csv" and "prefix_loading.csv" will not be provided.
+If the 8th term is T, "prefix_sort_by_absloading.csv" and "prefix_loading.csv" will not be provided.
 
-If Projected==T, "prefix_perc_sdev.csv" will show percentage of variance that can be explained by File1 (bulk) data
+If the 8th term is T, "prefix_perc_sdev.csv" will show percentage of variance that can be explained by File1 (bulk) data
 
 
 The ‘prefix’ is defined as the filename of the input file (the string before the suffix, like the string before ‘.csv’) 
