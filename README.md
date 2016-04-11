@@ -13,7 +13,7 @@ The 3rd term indicates the name of the input data set.
 Currently the program takes csv files or tab delimited file.
 The input file will be treated as a tab delimited file if the suffix is not '.csv'.
 Rows are genes and columns are samples. Row names and column names are required in the input file.
-If Projected == T, this entry of input data file can be bulk file (The file that you want to use PC/loadings information). 
+If Projected == T, this entry of input data file will be used as the 'reference file' - the program will calculate PCs using this data set and project the 9th file on these PCs.  
 
 The 4th term defines number of PCs to output (define it as k, default k =5)
 
@@ -23,9 +23,9 @@ The 6th term defines whether normalization is needed (T or F). If T is specified
 
 The 7th term defines whether X11 should be enabled/disabled. Default is T. If it is specified as F, figures won't be generated in console. The pair wise scatter plots will still be generated as a pdf file.
 
-The 8th term defines whether a user wants to run projected PCA. For example, projected PCA plot of single cell data using bulk loadings. (default is F). If it is set as T, the 9th term is required (see below).
+The 8th term defines whether a user wants to run projected PCA. For example, a user may project single cell data on bulk data generated PCs (default is F). If it is set as T, the 9th term is required (see below).
 
-The 9th term indicates the name of input data that a user wants to project (e.g. single cell file). If projected PCA is specified, the script will generate PCs using the data file from the 3rd file, and generate projected PCA plots for the data from the 9th term.
+The 9th term indicates the name of input data that a user wants to project (e.g. single cell file). If projected PCA is specified, the script will generate PCs using the data file from the 3rd file, and generate projected PCA plots for the data from the 9th term. Note that when calculating PCs from the third file, only the common genes in the 3rd file and 9th file are used.
 
 
 
@@ -53,7 +53,7 @@ pairwise plots of the transformed data; k PCs will be shown
 
 If the 8th term is T, "prefix_sort_by_absloading.csv" and "prefix_loading.csv" will not be provided.
 
-If the 8th term is T, "prefix_perc_sdev.csv" will show percentage of variance that can be explained by File1 (bulk) data
+If the 8th term is T, "prefix_perc_sdev.csv" will show percentage of variance that can be explained by the data in the third file (e.g. bulk data)
 
 
 The ‘prefix’ is defined as the filename of the input file (the string before the suffix, like the string before ‘.csv’) 
